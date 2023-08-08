@@ -1,0 +1,27 @@
+.profile__info {
+  max-width: 336px;
+
+  display: grid;
+  grid-template-columns: minmax(min-content, max-content) 1fr;
+  row-gap: 16px;
+  column-gap: 18px;
+  align-items: center;
+  align-content: center;
+
+  box-sizing: border-box;
+}
+
+/* Media =====
+================= */
+
+@media screen and (max-width: 630px) {
+  .profile__info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 7px;
+    column-gap: 10px;
+
+    margin: 26px 0 0 0;
+  }
+}

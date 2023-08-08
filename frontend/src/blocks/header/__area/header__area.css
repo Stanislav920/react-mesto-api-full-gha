@@ -1,0 +1,14 @@
+.header__area {
+  margin: 0;
+  display: flex;
+  gap: 24px;
+}
+
+/* Media =====
+================= */
+
+@media screen and (max-width: 630px) {
+  .header__area {
+    margin: 0 30px 33px 0;
+  }
+}

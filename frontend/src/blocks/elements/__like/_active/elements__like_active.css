@@ -1,0 +1,5 @@
+.elements__like_active {
+  background: url(../../../../images/likeblack.svg) 50%;
+  background-repeat: no-repeat;
+  background-size: transparent;
+}

@@ -1,0 +1,22 @@
+.profile__avatar {
+  display: flex;
+
+  width: 120px;
+  height: 120px;
+
+  margin: 0 30px 0 0;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Media =====
+================= */
+
+@media screen and (max-width: 630px) {
+  .profile__avatar {
+    margin: 0;
+  }
+}

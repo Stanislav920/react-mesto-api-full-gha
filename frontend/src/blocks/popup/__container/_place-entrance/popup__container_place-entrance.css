@@ -1,0 +1,8 @@
+.popup__container_place-entrance {
+  max-width: 430px;
+  min-height: 330px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
