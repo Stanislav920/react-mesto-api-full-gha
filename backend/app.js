@@ -1,13 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
-const router = require('./routes');
+const router = require('./routes/index');
 
 const { PORT = 3000 } = process.env;
 
 const app = express();
 
-const centralizedHandler = require('./middlewares/centralized-handler');
+const centralizedHandler = require('./middlewares/centralizedHandler');
 
 const { loginUser, createUser } = require('./controllers/users');
 const { validateUserAuth, validateUserRegister, } = require('./utils/validation');
@@ -29,6 +29,7 @@ app.use(requestLogger);
 // Cors
 app.use(cors);
 
+// Краш-тест
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
