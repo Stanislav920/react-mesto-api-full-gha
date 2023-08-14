@@ -26,21 +26,21 @@ module.exports.createUser = (req, res, next) => {
   const {
     name, about, avatar, email, password
   } = req.body;
-  const passwordHash = bcrypt.hash(password, 10);
 
-  passwordHash.then((hash) => User.create({
-    name, about, avatar, email, password: hash
-  }))
-    .then((user) => res.status(createError).send({
+  bcrypt.hash(password, 10).then((hash) => {
+    User.create({
+      name, about, avatar, email, password: hash
+    }).then((user) => res.status(createError).send({
       name: user.name, about: user.about, avatar: user.avatar, email: user.email
     }))
-    .catch((err) => {
-      if (err.name instanceof ValidationError) {
-        next(new BadRequestsError('Переданы некорректные данные пользователя'));
-      } if (err.code === DuplikateObjectError) {
-        next(new ConflictingRequestError('Пользователь с указанной почтой уже есть в системе'));
-      } else { next(err); }
-    });
+      .catch((err) => {
+        if (err.name instanceof ValidationError) {
+          next(new BadRequestsError('Переданы некорректные данные пользователя'));
+        } if (err.code === DuplikateObjectError) {
+          next(new ConflictingRequestError('Пользователь с указанной почтой уже есть в системе'));
+        } else { next(err); }
+      });
+  }).catch(next);
 };
 
 // Получение пользователя.

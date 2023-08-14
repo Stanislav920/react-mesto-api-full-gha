@@ -1,6 +1,6 @@
 // models/user.js
 const mongoose = require('mongoose');
-const validator = require('validator');
+const { regular } = require('../utils/validation');
 
 const cardSchema = new mongoose.Schema({
   name: {
@@ -13,7 +13,7 @@ const cardSchema = new mongoose.Schema({
     type: String,
     required: true,
     validate: {
-      validator: (correct) => validator.isUrl(correct),
+      validator: (correct) => regular.test(correct),
       message: 'Ошибка при передачи изображения',
     }
   },
